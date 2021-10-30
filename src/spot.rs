@@ -11,7 +11,7 @@ pub struct Spot {
 }
 
 impl Spot {
-    pub fn build() -> SpotBuilder<Empty, Empty> {
+    pub fn builder() -> SpotBuilder<Empty, Empty> {
         SpotBuilder::default()
     }
 

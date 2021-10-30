@@ -54,7 +54,7 @@ mod tests {
     }
 
     fn new_spot1() -> Spot {
-        Spot::build()
+        Spot::builder()
             .longitude(139.733231)
             .latitude(35.680916)
             .build()
