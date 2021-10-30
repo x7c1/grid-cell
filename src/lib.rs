@@ -1,8 +1,11 @@
+mod coordinate;
+pub use coordinate::Coordinate;
+
 mod level;
 pub use level::{First, Fourth, Level, Second, Third};
 
 mod spot_builder;
-pub use spot_builder::SpotBuilder;
+pub use spot_builder::{Empty, Filled, SpotBuilder};
 
 mod spot;
 pub use spot::Spot;
@@ -11,9 +14,9 @@ use std::marker::PhantomData;
 
 #[derive(Clone, Debug)]
 pub struct GridCell<A: Level> {
-    mesh_code: u64,
-    west_longitude: f64,
-    south_latitude: f64,
+    pub mesh_code: u64,
+    pub west_longitude: f64,
+    pub south_latitude: f64,
     phantom: PhantomData<A>,
 }
 

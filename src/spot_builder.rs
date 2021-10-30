@@ -1,4 +1,4 @@
-use crate::spot::{Coordinate, Spot};
+use crate::{Coordinate, Spot};
 use std::marker::PhantomData;
 
 pub struct Filled;
