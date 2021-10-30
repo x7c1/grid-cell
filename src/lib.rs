@@ -1,7 +1,7 @@
 mod spot_builder;
 mod spot_cells;
 
-pub use spot_cells::SpotCells;
+pub use spot_cells::Spot;
 
 #[derive(Debug)]
 pub struct GridCell {
@@ -12,7 +12,7 @@ pub struct GridCell {
 
 #[cfg(test)]
 mod tests {
-    use crate::SpotCells;
+    use crate::Spot;
 
     #[test]
     fn first_cell() {
@@ -42,8 +42,8 @@ mod tests {
         assert_eq!(actual.mesh_code, expected);
     }
 
-    fn spot() -> SpotCells {
-        SpotCells::build()
+    fn spot() -> Spot {
+        Spot::build()
             .longitude(139.733231)
             .latitude(35.680916)
             .build()

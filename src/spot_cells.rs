@@ -1,22 +1,12 @@
 use crate::spot_builder::{Empty, SpotBuilder};
 use crate::GridCell;
 
-pub struct SpotCells {
+pub struct Spot {
     pub longitude: f64,
     pub latitude: f64,
-    // first: Option<GridCell>,
 }
 
-impl SpotCells {
-    /*
-    pub fn new(longitude: f64, latitude: f64) -> Self {
-        SpotCells {
-            longitude,
-            latitude,
-        }
-    }
-    */
-
+impl Spot {
     pub fn build() -> SpotBuilder<Empty, Empty> {
         SpotBuilder::default()
     }
