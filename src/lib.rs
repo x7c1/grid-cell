@@ -26,28 +26,28 @@ mod tests {
 
     #[test]
     fn first_cell() {
-        let actual = new_spot1().first_cell().mesh_code;
+        let actual = new_spot1().as_first_cell().mesh_code;
         let expected = 5339;
         assert_eq!(actual, expected);
     }
 
     #[test]
     fn second_cell() {
-        let actual = new_spot1().second_cell().mesh_code;
+        let actual = new_spot1().as_second_cell().mesh_code;
         let expected = 533945;
         assert_eq!(actual, expected);
     }
 
     #[test]
     fn third_cell() {
-        let actual = new_spot1().third_cell().mesh_code;
+        let actual = new_spot1().as_third_cell().mesh_code;
         let expected = 53394518;
         assert_eq!(actual, expected);
     }
 
     #[test]
     fn fourth_cell() {
-        let actual = new_spot1().fourth_cell().mesh_code;
+        let actual = new_spot1().as_fourth_cell().mesh_code;
         let expected = 533945184;
         assert_eq!(actual, expected);
     }
