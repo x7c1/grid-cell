@@ -15,28 +15,28 @@ impl Spot {
         SpotBuilder::default()
     }
 
-    pub fn first(&mut self) -> &GridCell<First> {
+    pub fn first_cell(&mut self) -> &GridCell<First> {
         if self.first.is_none() {
             self.first = Some(self.create_first())
         }
         self.first.as_ref().unwrap()
     }
 
-    pub fn second(&mut self) -> &GridCell<Second> {
+    pub fn second_cell(&mut self) -> &GridCell<Second> {
         if self.second.is_none() {
             self.second = Some(self.create_second())
         }
         self.second.as_ref().unwrap()
     }
 
-    pub fn third(&mut self) -> &GridCell<Third> {
+    pub fn third_cell(&mut self) -> &GridCell<Third> {
         if self.third.is_none() {
             self.third = Some(self.create_third())
         }
         self.third.as_ref().unwrap()
     }
 
-    pub fn fourth(&mut self) -> &GridCell<Fourth> {
+    pub fn fourth_cell(&mut self) -> &GridCell<Fourth> {
         if self.fourth.is_none() {
             self.fourth = Some(self.create_fourth())
         }
@@ -63,7 +63,7 @@ impl Spot {
 
     fn create_second(&mut self) -> GridCell<Second> {
         let (latitude, longitude) = (self.latitude, self.longitude);
-        let first = self.first();
+        let first = self.first_cell();
 
         // lat difference of 2nd cell is 5 minutes, base point is south-lat of 1st cell.
         let degree_y = 5.0 / 60.0;
@@ -83,7 +83,7 @@ impl Spot {
 
     fn create_third(&mut self) -> GridCell<Third> {
         let (latitude, longitude) = (self.latitude, self.longitude);
-        let second = self.second();
+        let second = self.second_cell();
 
         // lat difference of 3rd cell is 30 seconds, base point is south-lat of 2nd cell.
         let degree_y = 30.0 / 60.0 / 60.0;
@@ -103,7 +103,7 @@ impl Spot {
 
     fn create_fourth(&mut self) -> GridCell<Fourth> {
         let (latitude, longitude) = (self.latitude, self.longitude);
-        let third = self.third();
+        let third = self.third_cell();
 
         // lat difference of 4th cell is 15 seconds, base point is south-lat of 3rd cell.
         let degree_y = 15.0 / 60.0 / 60.0;

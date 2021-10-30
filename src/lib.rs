@@ -23,34 +23,30 @@ mod tests {
 
     #[test]
     fn first_cell() {
-        let mut spot = new_spot1();
-        let actual = spot.first();
+        let actual = new_spot1().first_cell().mesh_code;
         let expected = 5339;
-        assert_eq!(actual.mesh_code, expected);
+        assert_eq!(actual, expected);
     }
 
     #[test]
     fn second_cell() {
-        let mut spot = new_spot1();
-        let actual = spot.second();
+        let actual = new_spot1().second_cell().mesh_code;
         let expected = 533945;
-        assert_eq!(actual.mesh_code, expected);
+        assert_eq!(actual, expected);
     }
 
     #[test]
     fn third_cell() {
-        let mut spot = new_spot1();
-        let actual = spot.third();
+        let actual = new_spot1().third_cell().mesh_code;
         let expected = 53394518;
-        assert_eq!(actual.mesh_code, expected);
+        assert_eq!(actual, expected);
     }
 
     #[test]
     fn fourth_cell() {
-        let mut spot = new_spot1();
-        let actual = spot.fourth();
+        let actual = new_spot1().fourth_cell().mesh_code;
         let expected = 533945184;
-        assert_eq!(actual.mesh_code, expected);
+        assert_eq!(actual, expected);
     }
 
     fn new_spot1() -> Spot {
