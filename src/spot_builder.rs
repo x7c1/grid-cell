@@ -25,6 +25,10 @@ impl SpotBuilder<Filled, Filled> {
         Spot {
             latitude: self.latitude.unwrap(),
             longitude: self.longitude.unwrap(),
+            first: None,
+            second: None,
+            third: None,
+            fourth: None,
         }
     }
 }
