@@ -16,7 +16,7 @@ mod tests {
 
     #[test]
     fn first_cell() {
-        let mut spot = spot();
+        let mut spot = new_spot1();
         let actual = spot.first();
         let expected = 5339;
         assert_eq!(actual.mesh_code, expected);
@@ -24,7 +24,7 @@ mod tests {
 
     #[test]
     fn second_cell() {
-        let mut spot = spot();
+        let mut spot = new_spot1();
         let actual = spot.second();
         let expected = 533945;
         assert_eq!(actual.mesh_code, expected);
@@ -32,7 +32,7 @@ mod tests {
 
     #[test]
     fn third_cell() {
-        let mut spot = spot();
+        let mut spot = new_spot1();
         let actual = spot.third();
         let expected = 53394518;
         assert_eq!(actual.mesh_code, expected);
@@ -40,13 +40,13 @@ mod tests {
 
     #[test]
     fn fourth_cell() {
-        let mut spot = spot();
+        let mut spot = new_spot1();
         let actual = spot.fourth();
         let expected = 533945184;
         assert_eq!(actual.mesh_code, expected);
     }
 
-    fn spot() -> Spot {
+    fn new_spot1() -> Spot {
         Spot::build()
             .longitude(139.733231)
             .latitude(35.680916)
