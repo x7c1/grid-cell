@@ -1,13 +1,13 @@
 use crate::spot_builder::{Empty, SpotBuilder};
-use crate::GridCell;
+use crate::{First, Fourth, GridCell, Second, Third};
 
 pub struct Spot {
     pub longitude: f64,
     pub latitude: f64,
-    pub(crate) first: Option<GridCell>,
-    pub(crate) second: Option<GridCell>,
-    pub(crate) third: Option<GridCell>,
-    pub(crate) fourth: Option<GridCell>,
+    pub(crate) first: Option<GridCell<First>>,
+    pub(crate) second: Option<GridCell<Second>>,
+    pub(crate) third: Option<GridCell<Third>>,
+    pub(crate) fourth: Option<GridCell<Fourth>>,
 }
 
 impl Spot {
@@ -15,28 +15,28 @@ impl Spot {
         SpotBuilder::default()
     }
 
-    pub fn first(&mut self) -> &GridCell {
+    pub fn first(&mut self) -> &GridCell<First> {
         if self.first.is_none() {
             self.first = Some(self.create_first())
         }
         self.first.as_ref().unwrap()
     }
 
-    pub fn second(&mut self) -> &GridCell {
+    pub fn second(&mut self) -> &GridCell<Second> {
         if self.second.is_none() {
             self.second = Some(self.create_second())
         }
         self.second.as_ref().unwrap()
     }
 
-    pub fn third(&mut self) -> &GridCell {
+    pub fn third(&mut self) -> &GridCell<Third> {
         if self.third.is_none() {
             self.third = Some(self.create_third())
         }
         self.third.as_ref().unwrap()
     }
 
-    pub fn fourth(&mut self) -> &GridCell {
+    pub fn fourth(&mut self) -> &GridCell<Fourth> {
         if self.fourth.is_none() {
             self.fourth = Some(self.create_fourth())
         }
@@ -45,7 +45,7 @@ impl Spot {
 }
 
 impl Spot {
-    fn create_first(&mut self) -> GridCell {
+    fn create_first(&mut self) -> GridCell<First> {
         // lat difference of 1st cell is 40 minutes, base point is 0 degrees north-lat.
         let degree_y = 40.0 / 60.0;
         let y = (self.latitude / degree_y).floor();
@@ -57,10 +57,11 @@ impl Spot {
             mesh_code: (x + 100.0 * y) as u64,
             west_longitude: east,
             south_latitude: y * degree_y,
+            phantom: Default::default(),
         }
     }
 
-    fn create_second(&mut self) -> GridCell {
+    fn create_second(&mut self) -> GridCell<Second> {
         let (latitude, longitude) = (self.latitude, self.longitude);
         let first = self.first();
 
@@ -76,10 +77,11 @@ impl Spot {
             mesh_code: first.mesh_code * 100 + (y * 10.0 + x) as u64,
             west_longitude: first.west_longitude + x * degree_x,
             south_latitude: first.south_latitude + y * degree_y,
+            phantom: Default::default(),
         }
     }
 
-    fn create_third(&mut self) -> GridCell {
+    fn create_third(&mut self) -> GridCell<Third> {
         let (latitude, longitude) = (self.latitude, self.longitude);
         let second = self.second();
 
@@ -95,10 +97,11 @@ impl Spot {
             mesh_code: second.mesh_code * 100 + (y * 10.0 + x) as u64,
             west_longitude: second.west_longitude + x * degree_x,
             south_latitude: second.south_latitude + y * degree_y,
+            phantom: Default::default(),
         }
     }
 
-    fn create_fourth(&mut self) -> GridCell {
+    fn create_fourth(&mut self) -> GridCell<Fourth> {
         let (latitude, longitude) = (self.latitude, self.longitude);
         let third = self.third();
 
@@ -116,6 +119,7 @@ impl Spot {
             mesh_code: third.mesh_code * 10 + (code as u64),
             west_longitude: third.west_longitude + x * degree_x,
             south_latitude: third.south_latitude + y * degree_y,
+            phantom: Default::default(),
         }
     }
 }

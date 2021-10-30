@@ -1,13 +1,20 @@
-mod spot_builder;
-mod spot_cells;
+mod level;
+pub use level::{First, Fourth, Level, Second, Third};
 
-pub use spot_cells::Spot;
+mod spot_builder;
+pub use spot_builder::SpotBuilder;
+
+mod spot;
+pub use spot::Spot;
+
+use std::marker::PhantomData;
 
 #[derive(Debug)]
-pub struct GridCell {
+pub struct GridCell<A: Level> {
     mesh_code: u64,
     west_longitude: f64,
     south_latitude: f64,
+    phantom: PhantomData<A>,
 }
 
 #[cfg(test)]
