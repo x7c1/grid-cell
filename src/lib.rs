@@ -9,7 +9,7 @@ pub use spot::Spot;
 
 use std::marker::PhantomData;
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct GridCell<A: Level> {
     mesh_code: u64,
     west_longitude: f64,

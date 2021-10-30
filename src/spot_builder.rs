@@ -1,4 +1,4 @@
-use crate::Spot;
+use crate::spot::{Coordinate, Spot};
 use std::marker::PhantomData;
 
 pub struct Filled;
@@ -23,8 +23,10 @@ impl Default for SpotBuilder<Empty, Empty> {
 impl SpotBuilder<Filled, Filled> {
     pub fn build(&self) -> Spot {
         Spot {
-            latitude: self.latitude.unwrap(),
-            longitude: self.longitude.unwrap(),
+            coordinate: Coordinate {
+                latitude: self.latitude.unwrap(),
+                longitude: self.longitude.unwrap(),
+            },
             first: None,
             second: None,
             third: None,
