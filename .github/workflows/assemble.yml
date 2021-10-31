@@ -32,6 +32,8 @@ jobs:
           cargo test
 
       - name: Release library
-#        if: ${{ github.ref == 'refs/heads/master' }}
+#        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           cargo publish
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
