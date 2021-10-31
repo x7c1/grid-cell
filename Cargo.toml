@@ -2,6 +2,11 @@
 name = "grid-cell"
 version = "0.0.1"
 edition = "2021"
+description = "Library for Japanese traditional grid cell"
+license = "MIT"
+keywords = ["grid cell", "standard grid cell", "japan", "地域メッシュ", "標準地域メッシュ"]
+repository = "https://github.com/x7c1/grid-cell"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
