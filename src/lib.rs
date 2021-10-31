@@ -4,9 +4,6 @@ pub use coordinate::Coordinate;
 mod level;
 pub use level::{First, Fourth, Level, Second, Third};
 
-mod spot_builder;
-pub use spot_builder::{Empty, Filled, SpotBuilder};
-
 mod spot;
 pub use spot::Spot;
 
@@ -22,7 +19,7 @@ pub struct GridCell<A: Level> {
 
 #[cfg(test)]
 mod tests {
-    use crate::Spot;
+    use crate::{Coordinate, Spot};
 
     #[test]
     fn first_cell() {
@@ -53,9 +50,9 @@ mod tests {
     }
 
     fn new_spot1() -> Spot {
-        Spot::builder()
-            .longitude(139.733231)
-            .latitude(35.680916)
-            .build()
+        Spot::new(Coordinate {
+            longitude: 139.733231,
+            latitude: 35.680916,
+        })
     }
 }

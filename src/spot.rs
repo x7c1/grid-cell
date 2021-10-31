@@ -1,4 +1,4 @@
-use crate::{Coordinate, Empty, First, Fourth, GridCell, Second, SpotBuilder, Third};
+use crate::{Coordinate, First, Fourth, GridCell, Second, Third};
 
 pub struct Spot {
     pub coordinate: Coordinate,
@@ -9,8 +9,14 @@ pub struct Spot {
 }
 
 impl Spot {
-    pub fn builder() -> SpotBuilder<Empty, Empty> {
-        SpotBuilder::default()
+    pub fn new(coordinate: Coordinate) -> Spot {
+        Spot {
+            coordinate,
+            first: None,
+            second: None,
+            third: None,
+            fourth: None,
+        }
     }
 
     pub fn as_first_cell(&mut self) -> &GridCell<First> {
