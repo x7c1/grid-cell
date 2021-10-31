@@ -30,3 +30,8 @@ jobs:
 
       - run: |
           cargo test
+
+      - name: Release library
+#        if: ${{ github.ref == 'refs/heads/master' }}
+        run: |
+          cargo publish
