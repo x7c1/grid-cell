@@ -4,7 +4,7 @@ version = "0.0.1"
 edition = "2021"
 description = "Library for Japanese traditional grid cell"
 license = "MIT"
-keywords = ["grid-cell", "standard-grid-cell", "japan", "地域メッシュ", "標準地域メッシュ"]
+keywords = ["grid-cell", "standard-grid-cell", "japan"]
 repository = "https://github.com/x7c1/grid-cell"
 readme = "README.md"
 
