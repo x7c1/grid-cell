@@ -4,7 +4,7 @@ Library for Japanese traditional geometry standard aka "地域メッシュ" or "
 
 ## Usage
 
-```
+```rust
 let spot = Spot::new(Coordinate {
     longitude: 139.733231,
     latitude: 35.680916,
