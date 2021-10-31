@@ -31,8 +31,7 @@ jobs:
       - run: |
           cargo test
 
-      - name: Release library
-#        if: ${{ github.ref == 'refs/heads/main' }}
+      - if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           cargo publish
         env:
