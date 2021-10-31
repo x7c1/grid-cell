@@ -16,7 +16,7 @@ impl Coordinate {
         let east = self.longitude.floor();
         let x = east - 100.0;
         GridCell {
-            mesh_code: (x + 100.0 * y) as u64,
+            code: (x + 100.0 * y) as u64,
             west_longitude: east,
             south_latitude: y * degree_y,
             phantom: Default::default(),
@@ -33,7 +33,7 @@ impl Coordinate {
         let x = ((self.longitude - first.west_longitude) / degree_x).floor();
 
         GridCell {
-            mesh_code: first.mesh_code * 100 + (y * 10.0 + x) as u64,
+            code: first.code * 100 + (y * 10.0 + x) as u64,
             west_longitude: first.west_longitude + x * degree_x,
             south_latitude: first.south_latitude + y * degree_y,
             phantom: Default::default(),
@@ -50,7 +50,7 @@ impl Coordinate {
         let x = ((self.longitude - second.west_longitude) / degree_x).floor();
 
         GridCell {
-            mesh_code: second.mesh_code * 100 + (y * 10.0 + x) as u64,
+            code: second.code * 100 + (y * 10.0 + x) as u64,
             west_longitude: second.west_longitude + x * degree_x,
             south_latitude: second.south_latitude + y * degree_y,
             phantom: Default::default(),
@@ -69,7 +69,7 @@ impl Coordinate {
         // suffix of 4th cell is (SW:1, SE:2, NW:3, NE:4).
         let code = (x + 1.0) + y * 2.0;
         GridCell {
-            mesh_code: third.mesh_code * 10 + (code as u64),
+            code: third.code * 10 + (code as u64),
             west_longitude: third.west_longitude + x * degree_x,
             south_latitude: third.south_latitude + y * degree_y,
             phantom: Default::default(),
